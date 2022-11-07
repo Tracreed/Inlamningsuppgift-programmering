@@ -1,25 +1,27 @@
+package main;
+
 public class Counter {
-    int words;
-    int rows;
-    int characters;
-    String longestWord;
+    public int words;
+    public int rows;
+    public int characters;
+    public String longestWord;
 
-    boolean stop = false;
+    public boolean stop = false;
 
-    Counter() {
+    public Counter() {
         this.words = 0;
         this.rows = 0;
         this.characters = 0;
         this.longestWord = "";
     }
 
-    void count(String line) {
+    public void count(String line) {
         if (line.equalsIgnoreCase("stop")) {
             this.stop = true;
+            return;
         }
 
-        var characters = line.replace(" ", "");
-        this.characters += characters.length();
+        this.characters += line.length();
 
         var words = line.split(" ");
         this.words += words.length;
@@ -33,3 +35,4 @@ public class Counter {
         this.rows++;
     }
 }
+
