@@ -27,10 +27,27 @@ class CounterTest {
     }
 
     @Test
-    @DisplayName("Check main.Counter counts")
-    void testCounts() {
+    @DisplayName("Check that stop trigger is case insensitive")
+    void testStopCase() {
+        counter.count("StOp");
+        assertTrue(counter.stop);
+    }
+
+    @Test
+    @DisplayName("Check word count")
+    void testWordCount() {
         assertEquals(4, counter.words);
+    }
+
+    @Test
+    @DisplayName("Check line count")
+    void testRowCount() {
         assertEquals(3, counter.rows);
+    }
+
+    @Test
+    @DisplayName("Check character count")
+    void testCharacterCount() {
         assertEquals(25, counter.characters);
     }
 
@@ -38,15 +55,5 @@ class CounterTest {
     @DisplayName("Check that the longest word is tracked correctly")
     void testLongestWord() {
         assertEquals(11, counter.longestWord.length());
-    }
-
-    @Test
-    @DisplayName("Confirm that no additional counting after stop occurs")
-    void testStopCount() {
-        counter.count("stop");
-        assertEquals(4, counter.words);
-        assertEquals(3, counter.rows);
-        assertEquals(25, counter.characters);
-        assertTrue(counter.stop);
     }
 }
